@@ -78,7 +78,7 @@ def generate_output_and_template_path(BASE_DATA_PATH, file_path):
     output_path = os.path.join(*output_path_list)
     output_path_dir = os.path.join(*output_path_list[:-1])
     # Generate template path
-    template_path = os.path.join(BASE_DATA_PATH, "MEAD_PREFORMER", file_path_list[-5], "template.obj")
+    template_path = os.path.join(BASE_DATA_PATH, "MEAD_FACEFORMER", "templates", f"{file_path_list[-5]}.obj")
     return output_path, output_path_dir, template_path
 
 
@@ -88,7 +88,7 @@ def do_mesh_registration(BASE_DATA_PATH):
   BASE_PATH_OPEN3D = os.path.join(BASE_DATA_PATH, "MEAD_OPEN3D")
   for root, dirs, files in os.walk(BASE_PATH_OPEN3D):
     for file in files:
-        if file.endswith(".obj"):
+        if file.endswith(".obj") and file != "template.obj":
             file_path = f"{root}/{file}"
             print(f"Processing {file_path}")
             output_path, output_path_dir, template_path = generate_output_and_template_path(BASE_DATA_PATH, file_path)
