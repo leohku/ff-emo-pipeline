@@ -2,12 +2,7 @@ import os
 import subprocess
 import shutil
 
-EMOCA_PY_PATH = 'emoca/gdl_apps/EMOCA/demos/test_emoca_on_video.py'
-BASE_DATA_PATH = '../test-data/'
-EMOCA_OUTPUT_PATH = os.path.join(BASE_DATA_PATH, 'MEAD_EMOCA/')
-
-
-def generate_output_path(file_path):
+def generate_output_path(BASE_DATA_PATH, file_path):
     fp = file_path.split(os.sep)
     # ['..', 'test-data', 'MEAD', 'M003', 'video-001', 'video', 'front', 'neutral', 'level_1', '002.mp4']
     fp[-1] = fp[-1].split(".")[0]
@@ -16,7 +11,10 @@ def generate_output_path(file_path):
     print(f'output path generated: {output_path}')
     return output_path
 
-def run_emoca(input_path):
+def run_emoca(input_path, EMOCA_OUTPUT_PATH):
+
+    EMOCA_PY_PATH = 'emoca/gdl_apps/EMOCA/demos/test_emoca_on_video.py'
+    
     args = ['--input_video', input_path, '--output_folder', EMOCA_OUTPUT_PATH, '--model_name', 'EMOCA',
     '--save_mesh=True', '--save_images=False', '--save_codes=False']
 
@@ -25,8 +23,10 @@ def run_emoca(input_path):
     subprocess.run(command)
     print(f'EMOCA finished.')
     
-def main():
-    print("1-emoca: extracting obj files from video")
+def do_extract_objs_from_video(BASE_DATA_PATH):
+    print("1-emoca: extracting obj files from video start")
+
+    EMOCA_OUTPUT_PATH = os.path.join(BASE_DATA_PATH, 'MEAD_EMOCA')
 
     for root, _, files in os.walk(os.path.join(BASE_DATA_PATH, 'MEAD')):
         for file in files:
@@ -34,8 +34,8 @@ def main():
             if file.endswith(".mp4") and is_front_cam:
                 file_path = f"{root}/{file}"
                 print(f"Processing {file_path}")
-                run_emoca(file_path)
-                final_output_path = generate_output_path(file_path)
+                run_emoca(file_path, EMOCA_OUTPUT_PATH)
+                final_output_path = generate_output_path(BASE_DATA_PATH, file_path)
                 if (not os.path.exists(final_output_path)):
                     os.makedirs(final_output_path)
                 # dir generated: processed_2023_Jan_05_01-07-20/82-25-854x480_affwild2/results/EMOCA
@@ -53,7 +53,11 @@ def main():
                     if dir != 'template_output' and dir != 'template_input':
                         shutil.rmtree(os.path.join(EMOCA_OUTPUT_PATH, dir))
     
-    print("1-emoca: extracting obj files from video done")
+    print("1-emoca: extracting obj files from video end")
+
+def main():
+    BASE_DATA_PATH = '../test-data/'
+    do_extract_objs_from_video(BASE_DATA_PATH)
 
 if __name__ == "__main__":
     main()

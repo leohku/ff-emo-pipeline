@@ -24,8 +24,14 @@ def do_sentence_packing(BASE_DATA_PATH):
           for obj in os.listdir(os.path.join(BASE_PATH_PREFORMER, subject, emotion, level, video)):
             mesh = trimesh.load(os.path.join(BASE_PATH_PREFORMER, subject, emotion, level, video, obj))
             verts = copy.deepcopy(mesh.vertices)
+            print(os.path.join(BASE_PATH_PREFORMER, subject, emotion, level, video, obj) + ", verts shape: " + str(verts.shape))
             verts = np.reshape(verts, (-1, verts.shape[0] * verts.shape[1]))
-            data_verts.append(verts)
+            # BUG: Not all objects from upstream have the same vertex shape
+            if verts.shape[1] == 59315 * 3:
+              # BUG: The order of verts being inserted into `data_verts` isn't chronological (frame by frame)
+              data_verts.append(verts)
+            else:
+              raise Exception("An obj doesn't have the exact number of vertices")
           
           data_verts = np.array(data_verts)
           data_verts = np.squeeze(data_verts)
