@@ -30,8 +30,10 @@ def main():
 
     for root, _, files in os.walk(os.path.join(BASE_DATA_PATH, 'MEAD')):
         for file in files:
-            if file.endswith(".mp4"):
+            is_front_cam = len(root.split(os.sep)) >= 3 and root.split(os.sep)[-3] == "front"
+            if file.endswith(".mp4") and is_front_cam:
                 file_path = f"{root}/{file}"
+                print(f"Processing {file_path}")
                 run_emoca(file_path)
                 final_output_path = generate_output_path(file_path)
                 if (not os.path.exists(final_output_path)):
