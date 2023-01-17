@@ -38,7 +38,7 @@ def do_templates_creation(BASE_DATA_PATH):
     print(f"Saved last frame of {file_path} to {extract_output_path}")
 
   # Run EMOCA image mode
-  emoca_image_script_path = os.path.abspath(os.path.join(".", "emoca", "gdl_apps", "EMOCA", "demos", "test_emoca_on_images.py"))
+  emoca_image_script_path = os.path.abspath(os.path.join("/", "home", "leoho", "repos", "pipeline", "1-emoca", "emoca", "gdl_apps", "EMOCA", "demos", "test_emoca_on_images.py"))
   emoca_template_input_path = os.path.abspath(EMOCA_INPUT_PATH)
   emoca_template_output_path = os.path.abspath(EMOCA_OUTPUT_PATH)
   os.system(f"python {emoca_image_script_path} --input_folder {emoca_template_input_path} --output_folder {emoca_template_output_path} --model_name EMOCA --save_mesh=True")
@@ -60,7 +60,7 @@ def do_templates_creation(BASE_DATA_PATH):
   print("1-emoca: templates-creation end")
 
 def main():
-  BASE_DATA_PATH = "../test-data/"
+  BASE_DATA_PATH = "/home/leoho/repos/pipeline/test-data/"
   do_templates_creation(BASE_DATA_PATH)
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@ def template_normalisation_ind(input_path, output_path):
   input_mesh = o3d.io.read_triangle_mesh(input_path)
 
   # Move source_mesh to the center
-  input_mesh.translate(np.array([0,0,0]), relative=False)
+  # input_mesh.translate(np.array([0,0,0]), relative=False)
   # Scale mesh to the sqrt of its surface area
   sqrt_surface_area = math.sqrt(input_mesh.get_surface_area())
   input_mesh.scale(1/sqrt_surface_area, np.array([0,0,0]))
@@ -50,7 +50,7 @@ def do_template_normalisation(BASE_DATA_PATH):
   print("2-open3d: template-normalisation end")
 
 def main():
-  BASE_DATA_PATH = "../test-data/"
+  BASE_DATA_PATH = "/home/leoho/repos/pipeline/test-data/"
   do_template_normalisation(BASE_DATA_PATH)
 
 if __name__ == "__main__":

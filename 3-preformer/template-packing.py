@@ -29,7 +29,7 @@ def do_template_packing(BASE_DATA_PATH):
   print("3-preformer: template-packing end")
 
 def main():
-  BASE_DATA_PATH = "../test-data/"
+  BASE_DATA_PATH = "/home/leoho/repos/pipeline/test-data/"
   do_template_packing(BASE_DATA_PATH)
 
 if __name__ == "__main__":
