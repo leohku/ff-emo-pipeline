@@ -22,8 +22,8 @@ def generate_output_and_template_path(BASE_DATA_PATH, file_path):
     # Generate output path
     output_path_list = copy.deepcopy(file_path_list)
     output_path_list[-6] = "MEAD_PREFORMER"
-    output_path = os.path.join(*output_path_list)
-    output_path_dir = os.path.join(*output_path_list[:-1])
+    output_path = os.path.join(BASE_DATA_PATH, *output_path_list[-6:])
+    output_path_dir = os.path.join(BASE_DATA_PATH, *output_path_list[-6:-1])
     # Generate template path
     template_path = os.path.join(BASE_DATA_PATH, "MEAD_FACEFORMER", "templates", f"{file_path_list[-5]}.obj")
     return output_path, output_path_dir, template_path
