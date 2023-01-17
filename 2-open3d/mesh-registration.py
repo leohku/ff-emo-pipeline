@@ -49,7 +49,7 @@ def do_mesh_registration(BASE_DATA_PATH):
   print("2-open3d: mesh-registration end")
 
 def main():
-  BASE_DATA_PATH = "/home/leoho/repos/pipeline/test-data/"
+  BASE_DATA_PATH = os.environ["BASE_DATA_PATH"]
   do_mesh_registration(BASE_DATA_PATH)
 
 if __name__ == '__main__':

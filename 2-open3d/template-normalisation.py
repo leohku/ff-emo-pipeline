@@ -50,7 +50,7 @@ def do_template_normalisation(BASE_DATA_PATH):
   print("2-open3d: template-normalisation end")
 
 def main():
-  BASE_DATA_PATH = "/home/leoho/repos/pipeline/test-data/"
+  BASE_DATA_PATH = os.environ["BASE_DATA_PATH"]
   do_template_normalisation(BASE_DATA_PATH)
 
 if __name__ == "__main__":

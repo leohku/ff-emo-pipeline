@@ -35,7 +35,7 @@ def do_audio_processing(BASE_DATA_PATH):
 
 
 def main():
-  BASE_DATA_PATH = "/home/leoho/repos/pipeline/test-data/"
+  BASE_DATA_PATH = os.environ["BASE_DATA_PATH"]
   do_audio_processing(BASE_DATA_PATH)
 
 

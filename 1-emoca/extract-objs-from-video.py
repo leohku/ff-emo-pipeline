@@ -56,7 +56,7 @@ def do_extract_objs_from_video(BASE_DATA_PATH):
     print("1-emoca: extracting obj files from video end")
 
 def main():
-    BASE_DATA_PATH = '/home/leoho/repos/pipeline/test-data/'
+    BASE_DATA_PATH = os.environ["BASE_DATA_PATH"]
     do_extract_objs_from_video(BASE_DATA_PATH)
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ conda activate work36_cu11_pipeline
 
 ## Usage
 
-For manual runs, first ensure the data folder has the following directories initialised
+First ensure the data folder has the following directories initialised
 
 ```
 MEAD              <- with data
@@ -18,7 +18,9 @@ MEAD_OPEN3D
 MEAD_PREFORMER
 ```
 
-Then, run these Python files in sequence:
+Run `pipeline.sh` to process data.
+
+Alternatively, set your env variable `BASE_DATA_PATH`, then run these Python files in sequence:
 
 ```
 cd 1-emoca
