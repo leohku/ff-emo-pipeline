@@ -1,6 +1,13 @@
 import os
 import pickle
-import trimesh
+import numpy as np
+
+def extract_vert(filepath):
+  with open(filepath, "r") as file:
+      # Extract the vertex data from the file
+      vertex_data = [line.split()[1:4] for line in file if line.startswith("v ")]
+      vertex_array = np.array(vertex_data)
+      return vertex_array
 
 def do_template_packing(BASE_DATA_PATH):
   print("3-preformer: template-packing start")
@@ -14,13 +21,14 @@ def do_template_packing(BASE_DATA_PATH):
     # Get rid of file extension
     subject_name = file.split(".")[0]
     # Load vertices list
-    mesh = trimesh.load(file_path)
+    verts = extract_vert(file_path)
+
     # Ensure the template vertices are of the correct shape
-    print(f"shape: {mesh.vertices.shape}")
-    if mesh.vertices.shape[0] != 59315 or mesh.vertices.shape[1] != 3:
+    print(f"shape: {verts.shape}")
+    if verts.shape[0] != 59315 or verts.shape[1] != 3:
       raise Exception("An obj doesn't have the exact number of vertices")
 
-    templates[subject_name] = mesh.vertices.tolist()
+    templates[subject_name] = verts.tolist()
 
   # Save templates dictionary
   f = open(os.path.join(BASE_PATH_FACEFORMER, "template.pkl"), "wb")
