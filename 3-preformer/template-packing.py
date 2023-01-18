@@ -25,7 +25,7 @@ def do_template_packing(BASE_DATA_PATH):
 
     # Ensure the template vertices are of the correct shape
     print(f"shape: {verts.shape}")
-    if verts.shape[0] != 59315 or verts.shape[1] != 3:
+    if verts.shape[0] != 5118 or verts.shape[1] != 3:
       raise Exception("An obj doesn't have the exact number of vertices")
 
     templates[subject_name] = verts.tolist()

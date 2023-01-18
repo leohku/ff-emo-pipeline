@@ -14,7 +14,7 @@ def mesh_registration_ind(template_path, file_path, output_path):
   sqrt_surface_area = math.sqrt(input_mesh.get_surface_area())
   input_mesh.scale(1/sqrt_surface_area, np.array([0,0,0]))
 
-  o3d.io.write_triangle_mesh(output_path, input_mesh)
+  o3d.io.write_triangle_mesh(output_path, input_mesh, write_triangle_uvs=False)
 
 
 def generate_output_and_template_path(BASE_DATA_PATH, file_path):

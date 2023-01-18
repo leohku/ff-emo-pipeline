@@ -44,10 +44,10 @@ def do_templates_creation(BASE_DATA_PATH):
   os.system(f"python {emoca_image_script_path} --input_folder {emoca_template_input_path} --output_folder {emoca_template_output_path} --model_name EMOCA --save_mesh=True")
   print(f"EMOCA image mode finished on all input images, saved to {EMOCA_OUTPUT_PATH}")
 
-  # Put all output mesh_coarse_detail.obj files to MEAD_OPEN3D folder
+  # Put all output mesh_coarse.obj files to MEAD_OPEN3D folder
   for root, dirs, files in os.walk(EMOCA_OUTPUT_PATH):
     for file in files:
-      if file == "mesh_coarse_detail.obj":
+      if file == "mesh_coarse.obj":
         file_path_list = root.split(os.sep)
         # Remove last 00 from folder name
         file_path_list[-1] = file_path_list[-1][:-2]

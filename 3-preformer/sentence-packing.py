@@ -42,11 +42,11 @@ def do_sentence_packing(BASE_DATA_PATH):
             target_obj_path = os.path.join(BASE_PATH_PREFORMER, subject, emotion, level, video, obj)
             # mesh = trimesh.load(os.path.join(BASE_PATH_PREFORMER, subject, emotion, level, video, obj))
             # verts = copy.deepcopy(mesh.vertices)
-            frame_count = int(obj.split(os.sep)[-1].split('_')[3].split('.')[0]) # for sorting
+            frame_count = int(obj.split(os.sep)[-1].split('_')[-1].split('.')[0]) # for sorting
             verts = extract_vert(target_obj_path)
             print(os.path.join(BASE_PATH_PREFORMER, subject, emotion, level, video, obj) + ", verts shape: " + str(verts.shape))
             # BUG: Not all objects from upstream have the same vertex shape
-            if verts.shape[1] == 59315 * 3:
+            if verts.shape[1] == 5118 * 3:
               heapq.heappush(data_verts, (frame_count, verts))
             else:
               raise Exception("An obj doesn't have the exact number of vertices")

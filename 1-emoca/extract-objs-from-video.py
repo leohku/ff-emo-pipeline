@@ -40,15 +40,15 @@ def do_extract_objs_from_video(BASE_DATA_PATH):
                     os.makedirs(final_output_path)
                 # dir generated: processed_2023_Jan_05_01-07-20/82-25-854x480_affwild2/results/EMOCA
                 for dir in os.listdir(EMOCA_OUTPUT_PATH):
-                    # 'mesh_coarse_detail.obj' may exist in template_output - exclude MEAD_EMOCA/template_output
+                    # 'mesh_coarse.obj' may exist in template_output - exclude MEAD_EMOCA/template_output
                     if dir != 'template_output':
                         for pp_root, _, pp_files in os.walk(os.path.join(EMOCA_OUTPUT_PATH, dir)):
                             for pp_file in pp_files:
-                                if pp_file == 'mesh_coarse_detail.obj':
+                                if pp_file == 'mesh_coarse.obj':
                                     frame_count = pp_root.split(os.sep)[-1].split('_')[0] # extract the frame num from folder name
-                                    print(f'Saving to {final_output_path}/mesh_coarse_detail_{frame_count}.obj')
+                                    print(f'Saving to {final_output_path}/mesh_coarse_{frame_count}.obj')
                                     pp_path = f'{pp_root}/{pp_file}'
-                                    shutil.copy(pp_path, f'{final_output_path}/mesh_coarse_detail_{frame_count}.obj')
+                                    shutil.copy(pp_path, f'{final_output_path}/mesh_coarse_{frame_count}.obj')
                     # Delete output folder when processing done
                     if dir != 'template_output' and dir != 'template_input':
                         shutil.rmtree(os.path.join(EMOCA_OUTPUT_PATH, dir))

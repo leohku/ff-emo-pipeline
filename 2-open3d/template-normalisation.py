@@ -29,7 +29,7 @@ def template_normalisation_ind(input_path, output_path):
   sqrt_surface_area = math.sqrt(input_mesh.get_surface_area())
   input_mesh.scale(1/sqrt_surface_area, np.array([0,0,0]))
 
-  o3d.io.write_triangle_mesh(output_path, input_mesh)
+  o3d.io.write_triangle_mesh(output_path, input_mesh, write_triangle_uvs=False)
 
 def do_template_normalisation(BASE_DATA_PATH):
   print("2-open3d: template-normalisation start")

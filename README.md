@@ -18,7 +18,7 @@ MEAD_OPEN3D
 MEAD_PREFORMER
 ```
 
-Run `pipeline.sh` to process data.
+Run `nohup ./pipeline.sh > logs/001.log 2>&1 &` to process data.
 
 Alternatively, set your env variable `BASE_DATA_PATH`, then run these Python files in sequence:
 

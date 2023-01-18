@@ -3,7 +3,7 @@ import pathlib
 import os
 import subprocess
 
-OBJ_PATH = '/home/leoho/repos/pipeline/99-misc/data/leo-try-stuff/'
+OBJ_PATH = '/home/leoho/repos/pipeline/99-misc/data/002/'
 # Adjust this for where you have the OBJ files.
 obj_root = pathlib.Path(OBJ_PATH)
 
@@ -56,7 +56,13 @@ objs.remove(objs["Cube"], do_unlink=True)
 for obj_fname in obj_root.glob('*.obj'):
     bpy.ops.import_scene.obj(filepath=str(obj_fname))
     for i in bpy.context.visible_objects:
-        print(i)
+        print(i.data)
+        # Use Phong smoothing for all meshes in scene
+        mesh = i.data
+        if hasattr(mesh, 'polygons'):
+            print("Applying Phong smoothing to " + str(i.data))
+            for f in mesh.polygons:
+                f.use_smooth = True
     scene.render.filepath = f'{OBJ_PATH}/obj-{obj_fname.stem}'
     bpy.ops.render.render(write_still=True)
 
