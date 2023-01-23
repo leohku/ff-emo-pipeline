@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export BASE_DATA_PATH="/home/leoho/repos/pipeline/test-data/"
+export BASE_DATA_PATH="/userhome/30/hylau/faceformer/fyp-pipeline/test-data/"
 
 starting_time=$(date +%s)
 echo "Starting UNIX time: "$starting_time

@@ -13,8 +13,8 @@ def generate_output_path(BASE_DATA_PATH, file_path):
 
 def run_emoca(input_path, EMOCA_OUTPUT_PATH):
 
-    EMOCA_PY_PATH = '/home/leoho/repos/pipeline/1-emoca/emoca/gdl_apps/EMOCA/demos/test_emoca_on_video.py'
-    
+    EMOCA_PY_PATH = './emoca/gdl_apps/EMOCA/demos/test_emoca_on_video.py'
+
     args = ['--input_video', input_path, '--output_folder', EMOCA_OUTPUT_PATH, '--model_name', 'EMOCA',
     '--save_mesh=True', '--save_images=False', '--save_codes=False']
 
