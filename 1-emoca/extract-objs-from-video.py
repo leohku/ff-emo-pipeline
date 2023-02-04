@@ -1,3 +1,7 @@
+"""
+    Generate a list of objs files from the videos
+"""
+
 import os
 import subprocess
 import shutil

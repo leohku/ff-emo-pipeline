@@ -50,6 +50,8 @@ def do_sentence_packing(BASE_DATA_PATH):
               heapq.heappush(data_verts, (frame_count, verts))
             else:
               raise Exception("An obj doesn't have the exact number of vertices")
+            # Remove input file after processing to optimise storage space
+            os.remove(target_obj_path)
           # sort the vertices list by frame num
           data_verts = get_sorted_list_from_heap(data_verts)
           # remove the sorting index

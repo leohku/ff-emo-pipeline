@@ -35,12 +35,14 @@ MEAD_OPEN3D/<M|Wxxx>/template.obj
 => run mesh centering and surface area sqrt normalisation
 => outputs stored in MEAD_FACEFORMER/templates/<M|Wxxx>.obj
 => `/templates`
+=> [X] removable after every run
 
 // Create registered 3D mesh from template and video objs ✅
 
 MEAD_OPEN3D/<M|Wxxx>/<emotion>/<level_1|level_2|level_3>/<xxx>/mesh_coarse_detail_<xxxxxx>.obj
 => run Open3D registration, template: MEAD_FACEFORMER/templates/<M|Wxxx>.obj
 => outputs stored in MEAD_PREFORMER/<M|Wxxx>/<emotion>/<level_1|level_2|level_3>/<xxx>/mesh_coarse_detail_<xxxxxx>.obj
+=> [X] removable after every run
 
 [MEAD_PREFORMER STAGE]
 
@@ -57,3 +59,4 @@ MEAD_PREFORMER/<M|Wxxx>/<emotion>/<level_1|level_2|level_3>/<xxx>/mesh_coarse_de
 => for every video (<xxx>), turn all .obj into one .npy
 => store in MEAD_FACEFORMER/vertices_npy/<M|Wxxx_emotion_(level_1|level_2|level_3)_xxx>.npy
 => `/vertices_npy`
+=> [X] removable after every run

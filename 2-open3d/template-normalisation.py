@@ -1,5 +1,4 @@
 import os
-import trimesh
 import math
 import open3d as o3d
 import numpy as np
@@ -45,6 +44,8 @@ def do_template_normalisation(BASE_DATA_PATH):
           os.makedirs(output_path_dir)
           print(f"Output path {output_path_dir} created")
         template_normalisation_ind(input_path, output_path)
+        # Remove input file after processing to optimise storage space
+        os.remove(input_path)
         print(f"Finished template normalisation for {input_path}, saved to {output_path}")
 
   print("2-open3d: template-normalisation end")

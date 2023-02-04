@@ -44,6 +44,8 @@ def do_mesh_registration(BASE_DATA_PATH):
                 os.makedirs(output_path_dir)
                 print(f"Output path {output_path_dir} created")
             mesh_registration_ind(template_path, file_path, output_path)
+            # Remove input file after processing to optimise storage space
+            os.remove(file_path)
             print(f"Finished registration for {file_path} with template {template_path}, saved to {output_path}")
 
   print("2-open3d: mesh-registration end")

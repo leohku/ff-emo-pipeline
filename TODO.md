@@ -5,5 +5,5 @@ High:
 [X] Fix BUG-4 and BUG-5
 
 Low:
-[ ] Allow intermediate results to be deleted to save disk space
+[X] Allow intermediate results to be deleted to save disk space (~50% space requirement reduction, 150GB -> 75GB)
 [ ] Refactor data_loader to take in data from disk, instead of first loading full dataset to RAM

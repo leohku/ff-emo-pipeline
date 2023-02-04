@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# PRODUCTION
+# export BASE_DATA_PATH="/home/leoho/data/pipeline-data/pipeline-data-lambda/"
+# TEST
 export BASE_DATA_PATH="/home/leoho/repos/pipeline/test-data/"
 
 starting_time=$(date +%s)
