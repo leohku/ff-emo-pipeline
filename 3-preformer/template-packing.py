@@ -6,7 +6,7 @@ def extract_vert(filepath):
   with open(filepath, "r") as file:
       # Extract the vertex data from the file
       vertex_data = [line.split()[1:4] for line in file if line.startswith("v ")]
-      vertex_array = np.array(vertex_data)
+      vertex_array = np.array(vertex_data).astype(dtype="float32")
       return vertex_array
 
 def do_template_packing(BASE_DATA_PATH):

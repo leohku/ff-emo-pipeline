@@ -16,7 +16,7 @@ def extract_vert(filepath):
   with open(filepath, "r") as file:
       # Extract the vertex data from the file
       vertex_data = [line.split()[1:4] for line in file if line.startswith("v ")]
-      vertex_array = np.array(vertex_data)
+      vertex_array = np.array(vertex_data).astype(dtype="float32")
       vert = np.reshape(vertex_array, (-1, vertex_array.shape[0] * vertex_array.shape[1]))
       return vert
 
