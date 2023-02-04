@@ -13,5 +13,9 @@
 
 **BUG-4:** Each entry of template.pkl should have been an np.array
 
+**SOLUTION-4**: Fixed
+
 **BUG-5:** All templates and sentences vertices are packed as str instead of float. "U12" type in numpy is 48 bytes, compared to 4 bytes for float. This means the file size can be 10 times smaller than current, and RAM can store 10 times more dataset before optimising the dataloader.
 In reality, the full "string" /vertices_npy folder of a subject is 56GB, while the full "float" /result (predicted vertices result, same dimension) is 1.7GB, 32x difference.
+
+

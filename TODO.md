@@ -1,6 +1,7 @@
 PRIORITY
 High:
-[ ] Evaluate quality of training for 25 epoch, 1 subject
+[X] Evaluate quality of training for 25 epoch, 1 subject
+  - Mouth cannot be closed
 [ ] Fix BUG-4 and BUG-5
 
 Low:

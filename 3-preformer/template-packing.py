@@ -28,7 +28,8 @@ def do_template_packing(BASE_DATA_PATH):
     if verts.shape[0] != 5118 or verts.shape[1] != 3:
       raise Exception("An obj doesn't have the exact number of vertices")
 
-    templates[subject_name] = verts.tolist()
+    # Fix BUG-4: Outputs should be in np.ndarray format
+    templates[subject_name] = verts
 
   # Save templates dictionary
   f = open(os.path.join(BASE_PATH_FACEFORMER, "template.pkl"), "wb")
