@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # PRODUCTION
-# export BASE_DATA_PATH="/home/leoho/data/pipeline-data/pipeline-data-lambda/"
+export BASE_DATA_PATH="/home/leoho/data/pipeline-data/pipeline-data-lambda/"
 # TEST
-export BASE_DATA_PATH="/home/leoho/repos/pipeline/test-data/"
+# export BASE_DATA_PATH="/home/leoho/repos/pipeline/test-data-3/"
 
 starting_time=$(date +%s)
 echo "Starting UNIX time: "$starting_time
@@ -18,6 +18,8 @@ python mesh-registration.py
 cd ../3-preformer
 python template-packing.py
 python sentence-packing.py
+cd ../4-variance
+python variance-extraction.py
 
 ending_time=$(date +%s)
 echo "Ending UNIX time: "$ending_time

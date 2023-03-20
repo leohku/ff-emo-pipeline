@@ -60,3 +60,4 @@ MEAD_PREFORMER/<M|Wxxx>/<emotion>/<level_1|level_2|level_3>/<xxx>/mesh_coarse_de
 => store in MEAD_FACEFORMER/vertices_npy/<M|Wxxx_emotion_(level_1|level_2|level_3)_xxx>.npy
 => `/vertices_npy`
 => [X] removable after every run
+(shape: (no_of_frames, 5118 * 3))
